@@ -1,5 +1,7 @@
 import { getAllCocktails } from "../../Controllers/CoctailController";
 
+export const dynamic = "force-static";
+
 export async function GET() {
   try {
     const cocktails = await getAllCocktails();

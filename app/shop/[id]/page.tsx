@@ -1,8 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getCocktailById } from "../../Controllers/CoctailController";
+import {
+  getAllCocktails,
+  getCocktailById,
+} from "../../Controllers/CoctailController";
 import { AddToCartButton } from "../../components/AddToCartButton";
+
+export async function generateStaticParams() {
+  const items = await getAllCocktails();
+  return items.map((item) => ({ id: item.id }));
+}
 
 export default async function CocktailPage({
   params,

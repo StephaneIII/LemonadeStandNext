@@ -57,6 +57,19 @@ directory and choosing deliberately which parts need client-side JavaScript.
 
 ## Deployment
 
-Push the project to GitHub, import the repository into
-[Vercel](https://vercel.com/new), and deploy using the detected Next.js
-settings. Vercel can create a new deployment for subsequent pushes.
+### GitHub Pages
+
+The workflow in `.github/workflows/deploy-pages.yml` builds a static export
+(`GITHUB_PAGES=true`, see `next.config.ts`) and publishes it on every push to
+`master`. The site is served at
+<https://stephaneiii.github.io/LemonadeStandNext/>. To test the export locally:
+
+```bash
+$env:GITHUB_PAGES="true"; npm run build   # PowerShell; output goes to out/
+```
+
+### Vercel
+
+Import the repository into [Vercel](https://vercel.com/new) and deploy using the
+detected Next.js settings. Without `GITHUB_PAGES` set, the app builds as a
+regular Next.js server app.
